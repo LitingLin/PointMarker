@@ -1,0 +1,62 @@
+﻿<Window x:Class="PointMarker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PointMarker"
+        mc:Ignorable="d"
+        Title="Point Marker" Height="Auto" Width="Auto" SizeToContent="WidthAndHeight">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Viewbox Grid.Row="0" Stretch="Uniform">
+            <Canvas Name="Canvas" Background="Transparent" MouseMove="Canvas_OnMouseMove" MouseLeftButtonDown="Canvas_OnMouseDown" MouseLeftButtonUp="Canvas_OnMouseUp" SizeChanged="Canvas_OnSizeChanged"></Canvas>
+        </Viewbox>
+        
+        <GroupBox Grid.Row="1" Header="Image File">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Name="TextBoxImageFilePath" GotFocus="TextBoxImageFilePath_OnGotFocus" LostFocus="TextBoxImageFilePath_OnLostFocus"></TextBox>
+                <Button Grid.Column="1" Content="Load" Name="ButtonOpenImageFile" Click="ButtonOpenImageFile_OnClick"></Button>
+                <Button Grid.Column="2" Content="Browse" Name="ButtonBrowseImageFile" Click="ButtonBrowseImageFile_OnClick"></Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="2" Header="Point File">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Name="TextBoxPointFilePath" GotFocus="TextBoxPointFilePath_OnGotFocus" LostFocus="TextBoxPointFilePath_OnLostFocus"></TextBox>
+                <Button Grid.Column="1" Content="Load" Name="ButtonOpenPointFile" Click="ButtonOpenPointFile_OnClick"></Button>
+                <Button Grid.Column="2" Content="Browse" Name="ButtonBrowsePointFile" Click="ButtonBrowsePointFile_OnClick"></Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="3" Header="Settings">
+            <Grid  VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" MaxWidth="200"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox Grid.Column="0" Content="Serial Number Visible" IsChecked="True" Checked="IsSerialNumberVisibleToggleButton_OnChecked" Unchecked="IsSerialNumberVisibleToggleButton_OnUnchecked"></CheckBox>
+                
+                <Label Grid.Column="1" Content="Position"></Label>
+                <ScrollBar Grid.Column="2" Orientation="Horizontal" Name="SerialNumberPositionScrollBar" Minimum="-50" Maximum="50" Value="20" ValueChanged="SerialNumberPositionRangeBase_OnValueChanged"></ScrollBar>
+
+                <Button Grid.Column="3" Content="Reset" Name="ButtonReset"  Click="ButtonReset_OnClick" ></Button>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
