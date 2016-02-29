@@ -18,7 +18,7 @@ namespace PointMarker
         public static async Task<IList<Point>> Read(Uri filePath)
         {
             string fileString;
-            using (StreamReader reader = new StreamReader(filePath.AbsolutePath))
+            using (StreamReader reader = new StreamReader(filePath.LocalPath))
             {
                 fileString = await reader.ReadToEndAsync();
             }
@@ -76,7 +76,7 @@ namespace PointMarker
             }
             stringBuilder.AppendLine(endSeparatorString);
 
-            using (StreamWriter writer = new StreamWriter(filePath.AbsolutePath))
+            using (StreamWriter writer = new StreamWriter(filePath.LocalPath))
             {
                 await writer.WriteAsync(stringBuilder.ToString());
             }

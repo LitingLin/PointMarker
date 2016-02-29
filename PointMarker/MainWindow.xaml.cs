@@ -424,7 +424,6 @@ namespace PointMarker
                     IList<Point> points = new List<Point>(_pointsDictionaryReverse.Count);
                     foreach (var pointUIElement in _pointsDictionaryReverse.Values)
                     {
-                        
                         Point point = pointUIElement.TransformToVisual(Canvas).Transform(new Point(0, 0));
                         point.X /= ratio;
                         point.Y /= ratio;
